@@ -51,8 +51,8 @@ extents = Vector2( 4, 240 )
 extents = Vector2( 68, 4 )
 
 [node name="Building" type="Node2D" groups=[
-"buildings",
 "ceilings",
+"buildings",
 ]]
 position = Vector2( 384, 512 )
 
@@ -72,12 +72,8 @@ shape = SubResource( 4 )
 position = Vector2( 84, -208 )
 shape = SubResource( 5 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=[
-"ceilings",
-]]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 28, -440 )
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, -4 )

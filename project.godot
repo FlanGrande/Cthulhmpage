@@ -39,6 +39,10 @@ ui_exit={
  ]
 }
 
+[network]
+
+limits/debugger_stdout/max_errors_per_frame=60
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
