@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/PhysicsBlock.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.6
+absorbent = true
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+void fragment()
+{
+	COLOR = vec4(0.7, 0.3, 0.1, 1.0);
+	
+	if(UV.x < 0.1 || UV.x > 0.9 || UV.y < 0.1 || UV.y > 0.9)
+	{
+		COLOR = vec4(vec3(1.0), 1.0);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 4 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 4, 32 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 32, 4 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 4, 32 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 32, 4 )
+
+[node name="LeftBlock" type="RigidBody2D" groups=[
+"buildings",
+"block",
+]]
+position = Vector2( -48, -48 )
+collision_layer = 4
+collision_mask = 4
+mode = 1
+physics_material_override = SubResource( 1 )
+gravity_scale = 6.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 2 )
+
+[node name="ClimbingAreas" type="Area2D" parent="."]
+collision_mask = 5
+
+[node name="Top" type="CollisionShape2D" parent="ClimbingAreas"]
+position = Vector2( 0, -28 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="Right" type="CollisionShape2D" parent="ClimbingAreas"]
+position = Vector2( 28, 0 )
+shape = SubResource( 6 )
+
+[node name="Bottom" type="CollisionShape2D" parent="ClimbingAreas"]
+position = Vector2( 0, 28 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Left" type="CollisionShape2D" parent="ClimbingAreas"]
+position = Vector2( -28, 0 )
+shape = SubResource( 8 )
+
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="CollTop" type="StaticBody2D" parent="Colliders"]
+position = Vector2( 0, -28 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollTop"]
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="CollRight" type="StaticBody2D" parent="Colliders"]
+position = Vector2( 28, 0 )
+rotation = 1.5708
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollRight"]
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="CollBottom" type="StaticBody2D" parent="Colliders"]
+position = Vector2( 0, 28 )
+rotation = 3.14159
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollBottom"]
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="CollLeft" type="StaticBody2D" parent="Colliders"]
+position = Vector2( -28, 0 )
+rotation = -1.5708
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollLeft"]
+shape = SubResource( 9 )
+one_way_collision = true
+[connection signal="body_entered" from="ClimbingAreas" to="." method="_on_ClimbingAreas_body_entered"]
