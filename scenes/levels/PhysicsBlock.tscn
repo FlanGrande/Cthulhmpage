@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/PhysicsBlock.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/levels/PhysicsBlock.tres" type="Material" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.6
@@ -9,22 +10,6 @@ absorbent = true
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-void fragment()
-{
-	COLOR = vec4(0.7, 0.3, 0.1, 1.0);
-	
-	if(UV.x < 0.1 || UV.x > 0.9 || UV.y < 0.1 || UV.y > 0.9)
-	{
-		COLOR = vec4(vec3(1.0), 1.0);
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 4 )
@@ -57,8 +42,8 @@ tracks/0/keys = {
 }
 
 [node name="PhysicsBlock" type="RigidBody2D" groups=[
-"buildings",
 "block",
+"buildings",
 ]]
 position = Vector2( -48, -48 )
 collision_layer = 4
@@ -73,10 +58,11 @@ script = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 4 )
-texture = ExtResource( 2 )
+material = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="ClimbingAreas" type="Area2D" parent="."]
+editor/display_folded = true
 collision_mask = 5
 
 [node name="Top" type="CollisionShape2D" parent="ClimbingAreas"]
@@ -98,6 +84,7 @@ position = Vector2( -28, 0 )
 shape = SubResource( 8 )
 
 [node name="Colliders" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="CollTop" type="StaticBody2D" parent="Colliders"]
 position = Vector2( 0, -28 )

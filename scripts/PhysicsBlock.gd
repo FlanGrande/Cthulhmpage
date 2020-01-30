@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal block_destroyed
+
 export var scale_factor = Vector2(1, 1)
 export var hit_points = 3
 
@@ -155,5 +157,9 @@ func hit_received(receive_damage):
 		physics_enabled = true
 		mode = RigidBody2D.MODE_RIGID
 		
-	if(hit_points == -3):
-		queue_free()
+	if(hit_points == 0):
+		destroy()
+
+func destroy():
+	emit_signal("block_destroyed")
+	queue_free()

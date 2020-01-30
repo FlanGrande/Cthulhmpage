@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/levels/PhysicsBlock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/DestructibleBlock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Cthulhu.tscn" type="PackedScene" id=2]
 
 [sub_resource type="VisualShaderNodeColorConstant" id=1]
@@ -54,257 +54,337 @@ extents = Vector2( 572, 32 )
 [node name="Buildings" type="Node2D" parent="."]
 position = Vector2( 276, 304 )
 
-[node name="PhysicsBuilding" type="Node2D" parent="Buildings"]
+[node name="Buidling1" type="Node2D" parent="Buildings"]
+
+[node name="DestructibleBlock" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
+
+[node name="DestructibleBlock5" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
+
+[node name="DestructibleBlock2" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
+
+[node name="DestructibleBlock7" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
+
+[node name="DestructibleBlock3" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
+
+[node name="DestructibleBlock8" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
+
+[node name="DestructibleBlock4" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
+
+[node name="DestructibleBlock6" parent="Buildings/Buidling1" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
+
+[node name="Buidling2" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 572, 536 )
+position = Vector2( 128, 0 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling2" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
 
-[node name="PhysicsBuilding2" type="Node2D" parent="Buildings"]
+[node name="Buidling3" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 828, 536 )
+position = Vector2( 256, 0 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding2" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling3" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
 
-[node name="PhysicsBuilding3" type="Node2D" parent="Buildings"]
+[node name="Buidling4" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 700, 536 )
+position = Vector2( 384, 0 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding3" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling4" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
 
-[node name="PhysicsBuilding4" type="Node2D" parent="Buildings"]
+[node name="Buidling5" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 636, 280 )
+position = Vector2( 96, -256 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding4" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling5" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
 
-[node name="PhysicsBuilding5" type="Node2D" parent="Buildings"]
+[node name="Buidling6" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 764, 280 )
+position = Vector2( 224, -256 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock9" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 564, 244 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock10" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 628, 244 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock13" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 596, 116 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding5" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="PhysicsBuilding6" type="Node2D" parent="Buildings"]
+[node name="DestructibleBlock8" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
+
+[node name="DestructibleBlock12" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 564, 180 )
+
+[node name="DestructibleBlock4" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
+
+[node name="DestructibleBlock6" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
+
+[node name="DestructibleBlock11" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 628, 180 )
+
+[node name="DestructibleBlock14" parent="Buildings/Buidling6" instance=ExtResource( 1 )]
+position = Vector2( 596, 52 )
+
+[node name="Buidling7" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 700, 24 )
+position = Vector2( 352, -256 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding6" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling7" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
 
-[node name="PhysicsBuilding7" type="Node2D" parent="Buildings"]
+[node name="Buidling8" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( -60, 536 )
+position = Vector2( -128, 0 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 564, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 564, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 628, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 628, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 564, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 564, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 628, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding7" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling8" instance=ExtResource( 1 )]
+position = Vector2( 628, 304 )
 
-[node name="PhysicsBuilding8" type="Node2D" parent="Buildings"]
+[node name="Buidling9" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( -60, 280 )
+position = Vector2( -96, -256 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 560, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock5" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 560, 368 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 624, 496 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock7" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 624, 368 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 560, 432 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock8" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 560, 304 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 624, 432 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding8" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock6" parent="Buildings/Buidling9" instance=ExtResource( 1 )]
+position = Vector2( 624, 304 )
 
-[node name="PhysicsBuilding9" type="Node2D" parent="Buildings"]
+[node name="Buidling10" type="Node2D" parent="Buildings"]
 editor/display_folded = true
-position = Vector2( 68, 536 )
+position = Vector2( -96, -512 )
 
-[node name="LeftBlock" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 16, -40 )
+[node name="DestructibleBlock" parent="Buildings/Buidling10" instance=ExtResource( 1 )]
+position = Vector2( 560, 496 )
 
-[node name="LeftBlock2" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 80, -40 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling10" instance=ExtResource( 1 )]
+position = Vector2( 624, 496 )
 
-[node name="LeftBlock3" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 80, -104 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling10" instance=ExtResource( 1 )]
+position = Vector2( 560, 432 )
 
-[node name="LeftBlock4" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 16, -104 )
+[node name="DestructibleBlock4" parent="Buildings/Buidling10" instance=ExtResource( 1 )]
+position = Vector2( 624, 432 )
 
-[node name="LeftBlock5" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 80, -168 )
+[node name="Buidling11" type="Node2D" parent="Buildings"]
+editor/display_folded = true
+position = Vector2( -692, 0 )
 
-[node name="LeftBlock6" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 16, -168 )
+[node name="DestructibleBlock" parent="Buildings/Buidling11" instance=ExtResource( 1 )]
+position = Vector2( 560, 496 )
 
-[node name="LeftBlock7" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 80, -232 )
+[node name="DestructibleBlock2" parent="Buildings/Buidling11" instance=ExtResource( 1 )]
+position = Vector2( 624, 496 )
 
-[node name="LeftBlock8" parent="Buildings/PhysicsBuilding9" instance=ExtResource( 1 )]
-position = Vector2( 16, -232 )
+[node name="DestructibleBlock3" parent="Buildings/Buidling11" instance=ExtResource( 1 )]
+position = Vector2( 560, 432 )
+
+[node name="DestructibleBlock4" parent="Buildings/Buidling11" instance=ExtResource( 1 )]
+position = Vector2( 624, 432 )
+
+[node name="Buidling12" type="Node2D" parent="Buildings"]
+editor/display_folded = true
+position = Vector2( -692, -128 )
+
+[node name="DestructibleBlock" parent="Buildings/Buidling12" instance=ExtResource( 1 )]
+position = Vector2( 560, 496 )
+
+[node name="DestructibleBlock2" parent="Buildings/Buidling12" instance=ExtResource( 1 )]
+position = Vector2( 624, 496 )
+
+[node name="DestructibleBlock3" parent="Buildings/Buidling12" instance=ExtResource( 1 )]
+position = Vector2( 560, 432 )
+
+[node name="DestructibleBlock4" parent="Buildings/Buidling12" instance=ExtResource( 1 )]
+position = Vector2( 624, 432 )
+
+[node name="Buidling13" type="Node2D" parent="Buildings"]
+editor/display_folded = true
+position = Vector2( -692, -256 )
+
+[node name="DestructibleBlock" parent="Buildings/Buidling13" instance=ExtResource( 1 )]
+position = Vector2( 560, 496 )
+
+[node name="DestructibleBlock2" parent="Buildings/Buidling13" instance=ExtResource( 1 )]
+position = Vector2( 624, 496 )
+
+[node name="DestructibleBlock3" parent="Buildings/Buidling13" instance=ExtResource( 1 )]
+position = Vector2( 560, 432 )
+
+[node name="DestructibleBlock4" parent="Buildings/Buidling13" instance=ExtResource( 1 )]
+position = Vector2( 624, 432 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 1024, 864 )
@@ -327,5 +407,5 @@ shape = SubResource( 5 )
 position = Vector2( 328, 728 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 800, 448 )
+position = Vector2( 796, 448 )
 current = true
