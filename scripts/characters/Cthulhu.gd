@@ -189,26 +189,26 @@ func attack(state):
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	#TO DO yield an array of close walls and pick the closest one
 	#print(area.get_parent().name + " IN")
-	if(area.get_parent().is_in_group("buildings")):
+	if(area != null and area.get_parent().is_in_group("buildings")):
 		nearest_buildings_array.push_back(area)
 		#current_building_to_climb_anchor_node = area.get_children()[area_shape]
 		#can_climb = true
 
 func _on_Area2D_area_shape_exited(area_id, area, area_shape, self_shape):
 	#print(area.get_parent().name + " OUT")
-	if(area.get_parent().is_in_group("buildings")):
+	if(area != null and area.get_parent().is_in_group("buildings")):
 		nearest_buildings_array.remove(nearest_buildings_array.find(area))
 		#can_climb = false
 
 func _on_Area2D_body_shape_entered(body_id, body, body_shape, area_shape):
 	#print(body.get_parent().name + " IN")
-	if(body.get_parent().is_in_group("ceilings")):
+	if(body != null and body.get_parent().is_in_group("ceilings")):
 		#can_climb = false
 		position = Vector2(global_position.x, body.global_position.y - $Sprite.texture.get_height()/2 - 16)
 
 func _on_Area2D_body_shape_exited(body_id, body, body_shape, area_shape):
 	#print(body.get_parent().name + " OUT")
-	if(body.get_parent().is_in_group("ceilings")):
+	if(body != null and body.get_parent().is_in_group("ceilings")):
 		#can_climb = false
 		#speed.y = 0
 		pass

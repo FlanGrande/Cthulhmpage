@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 export var scale_factor = Vector2(1, 1)
+export var hit_points = 3
 
 # If the block is rotated in a direction, this part of the block is facing upwards.
 # 0 degrees, upwards side is TOP.
@@ -21,31 +22,31 @@ func _ready():
 	switch_climbing_borders(false)
 	switch_collision_borders(UPWARDS_DIRECTION.TOP)
 	
-	print("//////////////////////START")
-	
-	print("Sprite position:\t\t", $Sprite.position)
-	print("Sprite scale:\t\t", $Sprite.scale)
-	print("CollisionShape2D Position:\t\t", $CollisionShape2D.position)
-	print("CollisionShape2D scale:\t\t", $CollisionShape2D.scale)
-	print("ClimbingTop Position:\t\t", $ClimbingAreas/Top.position)
-	print("ClimbingTop scale:\t\t", $ClimbingAreas/Top.scale)
-	print("CollTop Position:\t\t", $Colliders/CollTop.position)
-	print("CollTop scale:\t\t", $Colliders/CollTop.scale)
-	print("//////////////////////")
+#	print("//////////////////////START")
+#
+#	print("Sprite position:\t\t", $Sprite.position)
+#	print("Sprite scale:\t\t", $Sprite.scale)
+#	print("CollisionShape2D Position:\t\t", $CollisionShape2D.position)
+#	print("CollisionShape2D scale:\t\t", $CollisionShape2D.scale)
+#	print("ClimbingTop Position:\t\t", $ClimbingAreas/Top.position)
+#	print("ClimbingTop scale:\t\t", $ClimbingAreas/Top.scale)
+#	print("CollTop Position:\t\t", $Colliders/CollTop.position)
+#	print("CollTop scale:\t\t", $Colliders/CollTop.scale)
+#	print("//////////////////////")
 	
 	fit_to_scale(scale_factor)
 	
-	print("//////////////////////")
-	print("Sprite position:\t\t", $Sprite.position)
-	print("Sprite scale:\t\t", $Sprite.scale)
-	print("CollisionShape2D Position:\t\t", $CollisionShape2D.position)
-	print("CollisionShape2D scale:\t\t", $CollisionShape2D.scale)
-	print("ClimbingTop Position:\t\t", $ClimbingAreas/Top.position)
-	print("ClimbingTop scale:\t\t", $ClimbingAreas/Top.scale)
-	print("CollTop Position:\t\t", $Colliders/CollTop.position)
-	print("CollTop scale:\t\t", $Colliders/CollTop.scale)
-
-	print("//////////////////////END")
+#	print("//////////////////////")
+#	print("Sprite position:\t\t", $Sprite.position)
+#	print("Sprite scale:\t\t", $Sprite.scale)
+#	print("CollisionShape2D Position:\t\t", $CollisionShape2D.position)
+#	print("CollisionShape2D scale:\t\t", $CollisionShape2D.scale)
+#	print("ClimbingTop Position:\t\t", $ClimbingAreas/Top.position)
+#	print("ClimbingTop scale:\t\t", $ClimbingAreas/Top.scale)
+#	print("CollTop Position:\t\t", $Colliders/CollTop.position)
+#	print("CollTop scale:\t\t", $Colliders/CollTop.scale)
+#
+#	print("//////////////////////END")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -74,9 +75,6 @@ func _physics_process(delta):
 			Vector2(0.0, -1.0):
 				switch_climbing_borders(true)
 				switch_collision_borders(UPWARDS_DIRECTION.RIGHT)
-	else:
-		
-		pass
 
 func switch_climbing_borders(invert):
 	var climbing_areas = $ClimbingAreas.get_children()
@@ -140,10 +138,22 @@ func fit_to_scale(factor):
 
 func _on_ClimbingAreas_body_entered(body):
 	if(body.is_in_group("punch")):
-		call_deferred("punch_received")
+		call_deferred("hit_received", true)
 	
 	if(body.is_in_group("block") and body.mode == RigidBody2D.MODE_RIGID):
-		call_deferred("punch_received")
+		call_deferred("hit_received", false)
+	
+	if(body.is_in_group("floor") and body.mode == RigidBody2D.MODE_RIGID):
+		call_deferred("hit_received", true)
 
-func punch_received():
-	mode = RigidBody2D.MODE_RIGID
+func hit_received(receive_damage):
+	$AnimationPlayer.play("hit_received")
+	
+	if(receive_damage): hit_points -= 1
+	
+	if(hit_points == 0):
+		physics_enabled = true
+		mode = RigidBody2D.MODE_RIGID
+		
+	if(hit_points == -3):
+		queue_free()

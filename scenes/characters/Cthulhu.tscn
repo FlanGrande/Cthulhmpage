@@ -44,9 +44,8 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0, 2, 1, 0, 1 )
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 48.0
-height = 60.0
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 48, 80 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 28, 80 )
@@ -55,7 +54,7 @@ extents = Vector2( 28, 80 )
 radius = 14.9001
 height = 71.2108
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "attack"
 length = 2.0
 tracks/0/type = "value"
@@ -107,8 +106,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "attack_swing"
+[sub_resource type="Animation" id=8]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Arm:visible")
@@ -239,14 +237,13 @@ gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/RigidBody2D"]
 rotation = 1.83259
-scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.0
-anims/attack = SubResource( 8 )
-anims/attack_swing = SubResource( 7 )
+anims/attack = SubResource( 7 )
+anims/attack_swing = SubResource( 8 )
 anims/idle = SubResource( 9 )
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]
