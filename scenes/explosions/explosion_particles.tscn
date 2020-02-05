@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scenes/explosions/explosion_particles_material.tres" type="Material" id=1]
 
-
 [node name="particles" type="Particles2D"]
 emitting = false
 amount = 200

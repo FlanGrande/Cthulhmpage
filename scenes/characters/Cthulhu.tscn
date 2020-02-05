@@ -217,10 +217,8 @@ shape = SubResource( 4 )
 shape = SubResource( 5 )
 
 [node name="Arm" type="Node2D" parent="."]
-visible = false
 light_mask = 0
-position = Vector2( 51, -25 )
-rotation = -0.785398
+position = Vector2( 4, -20 )
 
 [node name="Sprite2" type="Sprite" parent="Arm"]
 rotation = 0.261799
@@ -238,7 +236,6 @@ gravity_scale = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/RigidBody2D"]
 rotation = 1.83259
 shape = SubResource( 6 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.0

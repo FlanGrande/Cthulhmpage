@@ -11,6 +11,12 @@ absorbent = true
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 4 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 32 )
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 4 )
 
@@ -20,14 +26,9 @@ extents = Vector2( 4, 32 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 32, 4 )
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 4, 32 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 32, 4 )
-
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "hit_received"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
@@ -42,8 +43,8 @@ tracks/0/keys = {
 }
 
 [node name="PhysicsBlock" type="RigidBody2D" groups=[
-"block",
 "buildings",
+"block",
 ]]
 position = Vector2( -48, -48 )
 collision_layer = 4
@@ -67,21 +68,21 @@ collision_mask = 5
 
 [node name="Top" type="CollisionShape2D" parent="ClimbingAreas"]
 position = Vector2( 0, -28 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Right" type="CollisionShape2D" parent="ClimbingAreas"]
 position = Vector2( 28, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="Bottom" type="CollisionShape2D" parent="ClimbingAreas"]
 position = Vector2( 0, 28 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="Left" type="CollisionShape2D" parent="ClimbingAreas"]
 position = Vector2( -28, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="Colliders" type="Node2D" parent="."]
 editor/display_folded = true
@@ -92,7 +93,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollTop"]
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 one_way_collision = true
 
 [node name="CollRight" type="StaticBody2D" parent="Colliders"]
@@ -102,7 +103,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollRight"]
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 one_way_collision = true
 
 [node name="CollBottom" type="StaticBody2D" parent="Colliders"]
@@ -112,7 +113,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollBottom"]
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 one_way_collision = true
 
 [node name="CollLeft" type="StaticBody2D" parent="Colliders"]
@@ -122,9 +123,21 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CollLeft"]
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hit_received = SubResource( 10 )
+anims/hit_received = SubResource( 8 )
+
+[node name="RayCastBottom" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 60 )
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 40, 0 )
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -40, 0 )
 [connection signal="body_entered" from="ClimbingAreas" to="." method="_on_ClimbingAreas_body_entered"]

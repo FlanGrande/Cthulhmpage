@@ -62,8 +62,6 @@ func _physics_process(delta):
 		
 		var orientation = Vector2(cos_x, sin_x)
 		
-		print(orientation)
-		
 		match orientation:
 			Vector2(1.0, 0.0):
 				switch_climbing_borders(false)
@@ -77,6 +75,16 @@ func _physics_process(delta):
 			Vector2(0.0, -1.0):
 				switch_climbing_borders(true)
 				switch_collision_borders(UPWARDS_DIRECTION.RIGHT)
+	
+	check_RayCasts()
+
+func check_RayCasts():
+	if(not $RayCastBottom.is_colliding() and (not $RayCastRight.is_colliding() or not $RayCastLeft.is_colliding())):
+		enable_physics()
+
+func enable_physics():
+	physics_enabled = true
+	mode = RigidBody2D.MODE_RIGID
 
 func switch_climbing_borders(invert):
 	var climbing_areas = $ClimbingAreas.get_children()
@@ -143,20 +151,21 @@ func _on_ClimbingAreas_body_entered(body):
 		call_deferred("hit_received", true)
 	
 	if(body.is_in_group("block") and body.mode == RigidBody2D.MODE_RIGID):
-		call_deferred("hit_received", false)
+		call_deferred("hit_received", true)
 	
 	if(body.is_in_group("floor") and body.mode == RigidBody2D.MODE_RIGID):
 		call_deferred("hit_received", true)
 
 func hit_received(receive_damage):
-	$AnimationPlayer.play("hit_received")
+	if(not $AnimationPlayer.is_playing()):
+		$AnimationPlayer.play("hit_received")
 	
 	if(receive_damage): hit_points -= 1
 	
-	if(hit_points == 0):
-		physics_enabled = true
-		mode = RigidBody2D.MODE_RIGID
-		
+#	if(hit_points == 0):
+#		physics_enabled = true
+#		mode = RigidBody2D.MODE_RIGID
+	
 	if(hit_points == 0):
 		destroy()
 
