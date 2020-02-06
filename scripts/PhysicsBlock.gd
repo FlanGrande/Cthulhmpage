@@ -3,7 +3,8 @@ extends RigidBody2D
 signal block_destroyed
 
 export var scale_factor = Vector2(1, 1)
-export var hit_points = 3
+export var hit_points = 100
+export var offset_on_punch = false
 
 # If the block is rotated in a direction, this part of the block is facing upwards.
 # 0 degrees, upwards side is TOP.
@@ -18,9 +19,12 @@ enum UPWARDS_DIRECTION {
 }
 
 var physics_enabled = false
+var falling_apart = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	change_animation("idle")
 	switch_climbing_borders(false)
 	switch_collision_borders(UPWARDS_DIRECTION.TOP)
 	
@@ -75,16 +79,26 @@ func _physics_process(delta):
 			Vector2(0.0, -1.0):
 				switch_climbing_borders(true)
 				switch_collision_borders(UPWARDS_DIRECTION.RIGHT)
-	
-	check_RayCasts()
+	else:
+		check_RayCasts()
 
 func check_RayCasts():
-	if(not $RayCastBottom.is_colliding() and (not $RayCastRight.is_colliding() or not $RayCastLeft.is_colliding())):
-		enable_physics()
+	if(not falling_apart and not $RayCastBottom.is_colliding() and (not $RayCastRight.is_colliding() or not $RayCastLeft.is_colliding())):
+		start_falling_apart()
+
+func start_falling_apart():
+	change_animation("falling_apart")
+	$FallingApartTimer.start()
+	falling_apart = true
 
 func enable_physics():
 	physics_enabled = true
 	mode = RigidBody2D.MODE_RIGID
+	apply_impulse(Vector2(), Vector2(0, 0.0001))
+
+func change_animation(new_animation_name):
+	if($AnimationPlayer.current_animation != new_animation_name):
+		$AnimationPlayer.play(new_animation_name)
 
 func switch_climbing_borders(invert):
 	var climbing_areas = $ClimbingAreas.get_children()
@@ -148,27 +162,35 @@ func fit_to_scale(factor):
 
 func _on_ClimbingAreas_body_entered(body):
 	if(body.is_in_group("punch")):
-		call_deferred("hit_received", true)
+		if(offset_on_punch):
+			position.x = floor(rand_range(0, 6) - 3)
+			position.y = floor(rand_range(0, 6) - 3)
+		
+		call_deferred("hit_received", 35)
 	
 	if(body.is_in_group("block") and body.mode == RigidBody2D.MODE_RIGID):
-		call_deferred("hit_received", true)
+		call_deferred("hit_received", 1)
 	
 	if(body.is_in_group("floor") and body.mode == RigidBody2D.MODE_RIGID):
-		call_deferred("hit_received", true)
+		call_deferred("hit_received", 200)
 
-func hit_received(receive_damage):
+func hit_received(damage_amount):
 	if(not $AnimationPlayer.is_playing()):
-		$AnimationPlayer.play("hit_received")
+		change_animation("hit_received")
 	
-	if(receive_damage): hit_points -= 1
+	hit_points -= damage_amount
 	
-#	if(hit_points == 0):
-#		physics_enabled = true
-#		mode = RigidBody2D.MODE_RIGID
+	if(hit_points <= 0):
+		enable_physics()
 	
-	if(hit_points == 0):
+	if(hit_points <= -100):
 		destroy()
 
 func destroy():
 	emit_signal("block_destroyed")
 	queue_free()
+
+func _on_FallingApartTimer_timeout():
+	falling_apart = false
+	change_animation("idle")
+	enable_physics()

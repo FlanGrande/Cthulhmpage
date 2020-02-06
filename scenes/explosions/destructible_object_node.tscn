@@ -8,10 +8,13 @@
 [node name="destructible_object_node" type="Node2D"]
 
 [node name="destructible_object" parent="." instance=ExtResource( 1 )]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 2 )
+blocks_per_side = 4
 blocks_impulse = 200.0
 blocks_gravity_scale = 8.0
-debris_max_time = 15.0
+debris_max_time = 8.0
 remove_debris = true
 collision_layers = 6
 collision_masks = 6
