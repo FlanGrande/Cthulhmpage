@@ -85,6 +85,12 @@ func _physics_process(delta):
 func check_RayCasts():
 	if(not falling_apart and not $RayCastBottom.is_colliding() and (not $RayCastRight.is_colliding() or not $RayCastLeft.is_colliding())):
 		start_falling_apart()
+	elif($RayCastBottom.is_colliding()):
+		var collider_object = $RayCastBottom.get_collider().get_parent().get_parent()
+		
+		if(collider_object.is_in_group("block")):
+			if(not falling_apart and collider_object.falling_apart):
+				start_falling_apart()
 
 func start_falling_apart():
 	change_animation("falling_apart")

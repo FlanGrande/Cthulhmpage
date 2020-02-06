@@ -17,6 +17,7 @@ func _on_PhysicsBlock_block_destroyed():
 	do_node.get_node("destructible_object").set_script(explode_object_script)
 	do_node.position = $PhysicsBlock.position
 	do_node.rotation = $PhysicsBlock.rotation
+	#TO DO: adjust size to scale_factor, if it even is posible.
 	add_child(do_node)
 	
 	call_deferred("detonate", true)

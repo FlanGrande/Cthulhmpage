@@ -295,7 +295,6 @@ position = Vector2( 628, 432 )
 position = Vector2( 628, 304 )
 
 [node name="Buidling9" type="Node2D" parent="Buildings"]
-editor/display_folded = true
 position = Vector2( -96, -256 )
 
 [node name="DestructibleBlock" parent="Buildings/Buidling9" instance=ExtResource( 1 )]

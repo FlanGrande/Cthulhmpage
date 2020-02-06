@@ -99,8 +99,8 @@ tracks/1/keys = {
 }
 
 [node name="PhysicsBlock" type="RigidBody2D" groups=[
-"block",
 "buildings",
+"block",
 ]]
 position = Vector2( -48, -48 )
 collision_layer = 4
@@ -141,7 +141,6 @@ position = Vector2( -28, 0 )
 shape = SubResource( 6 )
 
 [node name="Colliders" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="CollTop" type="StaticBody2D" parent="Colliders"]
 position = Vector2( 0, -28 )
@@ -200,6 +199,6 @@ enabled = true
 cast_to = Vector2( -40, 0 )
 
 [node name="FallingApartTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 6.0
 [connection signal="body_entered" from="ClimbingAreas" to="." method="_on_ClimbingAreas_body_entered"]
 [connection signal="timeout" from="FallingApartTimer" to="." method="_on_FallingApartTimer_timeout"]
