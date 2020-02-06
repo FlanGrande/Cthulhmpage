@@ -175,7 +175,7 @@ func _on_ClimbingAreas_body_entered(body):
 		call_deferred("hit_received", 35)
 	
 	if(body.is_in_group("block") and body.mode == RigidBody2D.MODE_RIGID):
-		call_deferred("hit_received", 1)
+		call_deferred("hit_received", 15)
 	
 	if(body.is_in_group("floor") and body.mode == RigidBody2D.MODE_RIGID):
 		call_deferred("hit_received", 200)
